@@ -1,0 +1,201 @@
+<div class="h-20 w-full"></div>
+<nav
+  class="z-50 w-full border-b border-[var(--border)] bg-[var(--surface)] fixed top-0"
+>
+  <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+    <!-- =================================
+         LOGO
+    ================================= -->
+
+    <a
+      href="/"
+      data-nav-link
+      class="text-2xl font-black tracking-tight text-[var(--text)]"
+    >
+      شهرآوا
+    </a>
+
+    <!-- =================================
+         DESKTOP NAVIGATION
+    ================================= -->
+
+    <div class="hidden items-center gap-8 md:flex">
+      <!-- HOME -->
+
+      <a
+        href="/"
+        data-nav-link
+        class="relative py-7 text-[var(--muted)] transition-colors hover:text-[var(--text)]"
+      >
+        خانه
+
+        <span
+          class="nav-indicator absolute bottom-0 right-0 h-0.5 w-full origin-right scale-x-0 bg-[var(--accent)] transition-transform duration-300"
+        ></span>
+      </a>
+
+      <!-- CITIES -->
+
+      <a
+        href="/cities/"
+        data-nav-link
+        class="relative py-7 text-[var(--muted)] transition-colors hover:text-[var(--text)]"
+      >
+        شهرها
+
+        <span
+          class="nav-indicator absolute bottom-0 right-0 h-0.5 w-full origin-right scale-x-0 bg-[var(--accent)] transition-transform duration-300"
+        ></span>
+      </a>
+
+      <!-- ATTRACTIONS -->
+
+      <a
+        href="/attractions/"
+        data-nav-link
+        class="relative py-7 text-[var(--muted)] transition-colors hover:text-[var(--text)]"
+      >
+        جاذبه‌ها
+
+        <span
+          class="nav-indicator absolute bottom-0 right-0 h-0.5 w-full origin-right scale-x-0 bg-[var(--accent)] transition-transform duration-300"
+        ></span>
+      </a>
+
+      <!-- ABOUT -->
+
+      <a
+        href="/about/"
+        data-nav-link
+        class="relative py-7 text-[var(--muted)] transition-colors hover:text-[var(--text)]"
+      >
+        درباره
+
+        <span
+          class="nav-indicator absolute bottom-0 right-0 h-0.5 w-full origin-right scale-x-0 bg-[var(--accent)] transition-transform duration-300"
+        ></span>
+      </a>
+    </div>
+
+    <!-- =================================
+         ACTIONS
+    ================================= -->
+
+    <div class="flex items-center gap-3">
+      <!-- THEME -->
+
+      <button
+        id="theme-toggle"
+        type="button"
+        aria-label="فعال کردن حالت تاریک"
+        class="group relative border-2 dark:border-white flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-slate-900 shadow-[0_4px_14px_rgba(15,23,42,0.15)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(15,23,42,0.22)] active:scale-90"
+      >
+        <span
+          class="absolute inset-0 rounded-full bg-amber-400/20 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100"
+        ></span>
+
+        <img
+          src="../assets/icon/Sun 1.svg"
+          id="iconThemeNavbar"
+          alt="iconThemeNavbar"
+          class="relative z-10 h-[19px] w-[19px] transition-transform duration-500 group-hover:rotate-[-15deg] group-hover:scale-110"
+        />
+      </button>
+
+      <!-- MOBILE MENU BUTTON -->
+
+      <button
+        id="mobile-menu-toggle"
+        type="button"
+        aria-label="باز کردن منوی موبایل"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="group flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--text)] transition-all duration-300 hover:border-[var(--accent)] hover:bg-[var(--bg)] active:scale-90 md:hidden"
+      >
+        <span class="relative block h-5 w-5">
+          <span
+            class="menu-line absolute right-0 top-0 h-0.5 w-5 rounded-full bg-current transition-all duration-300"
+          ></span>
+
+          <span
+            class="menu-line absolute right-0 top-1/2 h-0.5 w-5 -translate-y-1/2 rounded-full bg-current transition-all duration-300"
+          ></span>
+
+          <span
+            class="menu-line absolute bottom-0 right-0 h-0.5 w-5 rounded-full bg-current transition-all duration-300"
+          ></span>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- =================================
+       MOBILE MENU
+  ================================= -->
+
+  <div
+    id="mobile-menu"
+    class="grid grid-rows-[0fr] border-t border-[var(--border)] bg-[var(--surface)] opacity-0 transition-all duration-300 md:hidden"
+  >
+    <div class="overflow-hidden">
+      <div class="space-y-2 px-6 py-5">
+        <!-- HOME -->
+
+        <a
+          href="/"
+          data-nav-link
+          class="mobile-nav-link group flex items-center justify-between rounded-xl px-4 py-3 text-[var(--muted)] transition-all duration-200 hover:bg-[var(--bg)] hover:text-[var(--text)]"
+        >
+          <span>خانه</span>
+
+          <span
+            class="h-1.5 w-1.5 rounded-full bg-[var(--accent)] opacity-0 transition-opacity duration-200"
+          ></span>
+        </a>
+
+        <!-- CITIES -->
+
+        <a
+          href="/cities/"
+          data-nav-link
+          class="mobile-nav-link group flex items-center justify-between rounded-xl px-4 py-3 text-[var(--muted)] transition-all duration-200 hover:bg-[var(--bg)] hover:text-[var(--text)]"
+        >
+          <span>شهرها</span>
+
+          <span
+            class="h-1.5 w-1.5 rounded-full bg-[var(--accent)] opacity-0 transition-opacity duration-200"
+          ></span>
+        </a>
+
+        <!-- ATTRACTIONS -->
+
+        <a
+          href="/attractions/"
+          data-nav-link
+          class="mobile-nav-link group flex items-center justify-between rounded-xl px-4 py-3 text-[var(--muted)] transition-all duration-200 hover:bg-[var(--bg)] hover:text-[var(--text)]"
+        >
+          <span>جاذبه‌ها</span>
+
+          <span
+            class="h-1.5 w-1.5 rounded-full bg-[var(--accent)] opacity-0 transition-opacity duration-200"
+          ></span>
+        </a>
+
+        <!-- ABOUT -->
+
+        <a
+          href="/about/"
+          data-nav-link
+          class="mobile-nav-link group flex items-center justify-between rounded-xl px-4 py-3 text-[var(--muted)] transition-all duration-200 hover:bg-[var(--bg)] hover:text-[var(--text)]"
+        >
+          <span>درباره</span>
+
+          <span
+            class="h-1.5 w-1.5 rounded-full bg-[var(--accent)] opacity-0 transition-opacity duration-200"
+          ></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+<script src="../js/theme.js"></script>

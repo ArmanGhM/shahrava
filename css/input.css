@@ -1,0 +1,61 @@
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../assets/fonts/Vazirmatn-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../assets/fonts/Vazirmatn-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../assets/fonts/Vazirmatn-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../assets/fonts/Vazirmatn-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@import "tailwindcss";
+
+html {
+  font-family: "Vazirmatn", sans-serif;
+}
+
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --primary: #2563eb;
+  --secondary: #0284c7;
+  --accent: #eab308;
+  --text: #07111f;
+  --muted: #526174;
+  --border: #d9e2ec;
+}
+
+.dark {
+  --bg: #060d18;
+  --surface: #0c1728;
+  --card: #11233a;
+  --primary: #2563eb;
+  --secondary: #38bdf8;
+  --accent: #facc15;
+  --text: #f8fafc;
+  --muted: #a8b3c2;
+  --border: #24364d;
+}

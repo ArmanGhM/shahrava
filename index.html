@@ -1,0 +1,1480 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>شهرآوا | کاوشگر تعاملی شهرهای جهان</title>
+    <meta
+      name="description"
+      content="شهرآوا یک کاوشگر تعاملی برای کشف شهرهای جهان، اطلاعات شهری، آب‌وهوا، جاذبه‌ها، تصاویر و موقعیت جغرافیایی است."
+    />
+
+    <!-- Tailwind / Compiled CSS -->
+    <link rel="stylesheet" href="css/output.css" />
+    <link rel="stylesheet" href="css/input.css" />
+
+    <style>
+      /* =========================================================
+   SHAHRAVA — DESIGN SYSTEM + PREMIUM UI LAYER
+   Existing IDs / classes / hooks are preserved.
+========================================================= */
+
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --accent: #facc15;
+        --accent-bright: #fde047;
+        --background: #f8fafc;
+        --surface: #ffffff;
+        --card: rgba(255, 255, 255, 0.86);
+        --text: #0f172a;
+        --muted: #64748b;
+        --border: rgba(15, 23, 42, 0.08);
+        --shadow:
+          0 28px 60px -28px rgba(15, 23, 42, 0.28),
+          0 8px 20px -12px rgba(15, 23, 42, 0.08);
+        --shadow-sm:
+          0 1px 2px rgba(15, 23, 42, 0.04),
+          0 10px 26px -18px rgba(15, 23, 42, 0.18);
+        --ring: rgba(37, 99, 235, 0.18);
+        --focus: #2563eb;
+        --nav-bg: rgba(248, 250, 252, 0.72);
+        --grid: rgba(15, 23, 42, 0.045);
+        --glow-a: rgba(37, 99, 235, 0.12);
+        --glow-b: rgba(250, 204, 21, 0.1);
+        --num: #2563eb;
+        --btn-a: #2563eb;
+        --btn-b: #1d4ed8;
+        --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+        --fs-h1: clamp(1.75rem, 1rem + 3.4vw, 3.75rem);
+        --fs-h2: clamp(1.375rem, 1rem + 1.9vw, 2.5rem);
+        --fs-h3: clamp(1.0625rem, 0.95rem + 0.5vw, 1.25rem);
+        --fs-lead: clamp(1rem, 0.95rem + 0.35vw, 1.1875rem);
+        --fs-body: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);
+        --fs-small: clamp(0.875rem, 0.85rem + 0.15vw, 0.9375rem);
+        --lh-body: 1.85;
+        --sec-y: clamp(2.5rem, 1.5rem + 4.5vw, 6rem);
+        --hero-y: clamp(1.75rem, 0.5rem + 5vw, 6rem);
+        --gutter: clamp(1rem, 0.5rem + 2.2vw, 1.5rem);
+        --gap-hero: clamp(1.75rem, 1rem + 3vw, 5rem);
+        --gap-block: clamp(1.75rem, 1.25rem + 2vw, 3rem);
+        --gap-card: clamp(1rem, 0.6rem + 1.4vw, 1.5rem);
+        --hero-img: clamp(15rem, 10rem + 30vw, 40rem);
+        color-scheme: light;
+      }
+      html.dark,
+      html[data-theme="dark"] {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --background: #050816;
+        --surface: #0b1120;
+        --card: rgba(15, 23, 42, 0.75);
+        --text: #f8fafc;
+        --muted: #94a3b8;
+        --border: rgba(148, 163, 184, 0.15);
+        --shadow:
+          0 30px 80px -30px rgba(0, 0, 0, 0.7),
+          0 0 0 1px rgba(148, 163, 184, 0.06);
+        --shadow-sm: 0 12px 30px -18px rgba(0, 0, 0, 0.6);
+        --ring: rgba(96, 165, 250, 0.28);
+        --focus: #facc15;
+        --nav-bg: rgba(5, 8, 22, 0.68);
+        --grid: rgba(148, 163, 184, 0.06);
+        --glow-a: rgba(37, 99, 235, 0.22);
+        --glow-b: rgba(250, 204, 21, 0.07);
+        --num: #60a5fa;
+        color-scheme: dark;
+      }
+
+      /* Base */
+      html {
+        background: var(--background);
+        scroll-behavior: smooth;
+        scroll-padding-top: 5rem;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+      body {
+        background: transparent;
+        color: var(--text);
+        overflow-x: hidden;
+        overflow-x: clip;
+      }
+      ::selection {
+        background: rgba(37, 99, 235, 0.25);
+      }
+      img {
+        max-width: 100%;
+      }
+      h1,
+      h2 {
+        text-wrap: balance;
+      }
+      p {
+        text-wrap: pretty;
+      }
+      input::placeholder {
+        color: var(--muted);
+        opacity: 1;
+        text-overflow: ellipsis;
+      }
+      :where(a, button, input):focus-visible {
+        outline: 3px solid var(--focus);
+        outline-offset: 3px;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background:
+          radial-gradient(
+            38rem 30rem at 92% 4%,
+            var(--glow-a),
+            transparent 70%
+          ),
+          radial-gradient(
+            34rem 28rem at 4% 62%,
+            var(--glow-b),
+            transparent 70%
+          ),
+          linear-gradient(var(--grid) 1px, transparent 1px) 0 0/56px 56px,
+          linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0/56px 56px;
+        -webkit-mask: linear-gradient(#000 55%, transparent);
+        mask: linear-gradient(#000 55%, transparent);
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        top: 12%;
+        right: -12rem;
+        width: 28rem;
+        height: 28rem;
+        border-radius: 50%;
+        z-index: -1;
+        pointer-events: none;
+        background: radial-gradient(circle, var(--glow-a), transparent 68%);
+        animation: shDrift 14s ease-in-out infinite alternate;
+      }
+
+      /* Navbar (markup is injected by JS: styled through generic selectors) */
+      .sh-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--nav-bg);
+        -webkit-backdrop-filter: saturate(1.6) blur(16px);
+        backdrop-filter: saturate(1.6) blur(16px);
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 10px 30px -22px rgba(15, 23, 42, 0.35);
+      }
+      #navbar > * {
+        background: transparent;
+      }
+      #navbar a[data-nav-link] {
+        position: relative;
+        transition: color 0.25s;
+      }
+      #navbar a[data-nav-link]:not(:has(img, svg))::after {
+        content: "";
+        position: absolute;
+        inset-inline: 0;
+        bottom: -0.35rem;
+        height: 2px;
+        border-radius: 2px;
+        background: linear-gradient(270deg, var(--primary), var(--accent));
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.35s var(--ease);
+      }
+      #navbar a[data-nav-link]:not(:has(img, svg)):hover,
+      #navbar a[aria-current="page"],
+      #navbar a.active {
+        color: var(--primary);
+      }
+      #navbar a[data-nav-link]:hover::after,
+      #navbar a[aria-current="page"]::after,
+      #navbar a.active::after {
+        transform: scaleX(1);
+      }
+      #navbar button {
+        transition:
+          transform 0.25s var(--ease),
+          box-shadow 0.25s;
+      }
+      #navbar button:hover {
+        box-shadow: 0 0 0 4px var(--ring);
+      }
+      #navbar button:active {
+        transform: scale(0.94);
+      }
+
+      /* Shared */
+      .sh-explore,
+      .sh-process {
+        background-image: linear-gradient(
+          180deg,
+          rgba(37, 99, 235, 0.05),
+          transparent 60%
+        );
+      }
+      .sh-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        max-width: 100%;
+        padding: 0.35rem 0.9rem;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: var(--card);
+        font-size: 0.74rem;
+        letter-spacing: 0.14em;
+        direction: ltr;
+      }
+      .sh-eyebrow::before {
+        content: "";
+        flex: none;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.22);
+      }
+      .sh-gradient-text {
+        background: linear-gradient(
+          120deg,
+          var(--primary-dark),
+          var(--primary) 50%,
+          #7c3aed
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+      }
+      html.dark .sh-gradient-text {
+        background-image: linear-gradient(
+          120deg,
+          #60a5fa,
+          #3b82f6 50%,
+          #a78bfa
+        );
+      }
+      .sh-num {
+        display: inline-grid;
+        place-items: center;
+        flex: none;
+        min-width: 3rem;
+        height: 3rem;
+        padding-inline: 0.5rem;
+        border-radius: 1rem;
+        font-size: 1.25rem;
+        line-height: 1;
+        direction: ltr;
+      }
+      .sh-num--b {
+        color: var(--num);
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(37, 99, 235, 0.2);
+      }
+      .sh-num--y {
+        color: #050505;
+        background: linear-gradient(
+          135deg,
+          var(--accent-bright),
+          var(--accent)
+        );
+        box-shadow: 0 10px 22px -12px rgba(250, 204, 21, 0.9);
+      }
+      .sh-link:hover {
+        text-decoration: underline;
+        text-underline-offset: 0.4rem;
+        text-decoration-color: var(--accent);
+      }
+      .sh-link-all {
+        padding: 0.6rem 1.1rem;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: var(--card);
+        transition:
+          border-color 0.3s,
+          gap 0.3s;
+      }
+      .sh-link-all:hover {
+        border-color: var(--primary);
+      }
+
+      /* Hero */
+      .sh-hero-visual {
+        position: relative;
+        isolation: isolate;
+      }
+      .sh-hero-visual::before {
+        content: "";
+        position: absolute;
+        inset: 8% 6%;
+        z-index: -1;
+        border-radius: 50%;
+        background:
+          radial-gradient(
+            circle at 30% 30%,
+            rgba(34, 211, 238, 0.28),
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 70% 70%,
+            rgba(37, 99, 235, 0.4),
+            transparent 60%
+          ),
+          radial-gradient(
+            circle at 80% 15%,
+            rgba(250, 204, 21, 0.25),
+            transparent 35%
+          );
+        filter: blur(36px);
+        opacity: 0.75;
+      }
+      #imgHedaerHome {
+        width: min(100%, var(--hero-img));
+        max-width: 100%;
+        padding: clamp(0.6rem, 2vw, 1.1rem);
+        border: 1px solid transparent;
+        border-radius: 2rem;
+        background:
+          linear-gradient(var(--surface), var(--surface)) padding-box,
+          linear-gradient(
+              135deg,
+              var(--primary),
+              var(--accent) 60%,
+              var(--primary-dark)
+            )
+            border-box;
+        box-shadow:
+          var(--shadow),
+          0 30px 70px -30px rgba(37, 99, 235, 0.55);
+        animation: shFloat 7s ease-in-out infinite;
+      }
+      .sh-search {
+        background: var(--card);
+        -webkit-backdrop-filter: blur(14px);
+        backdrop-filter: blur(14px);
+        box-shadow: var(--shadow-sm);
+        transition:
+          border-color 0.3s,
+          box-shadow 0.3s;
+      }
+      .sh-search:hover {
+        border-color: rgba(37, 99, 235, 0.35);
+      }
+      .sh-search:focus-within,
+      #final-city-search:focus {
+        border-color: var(--primary);
+        box-shadow:
+          0 0 0 4px var(--ring),
+          var(--shadow-sm);
+      }
+      .sh-search input:focus-visible {
+        outline: 0;
+      }
+      #city-search-button,
+      #final-search-button,
+      #explore-button {
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 12px 26px -10px rgba(37, 99, 235, 0.65);
+      }
+      #city-search-button,
+      #final-search-button {
+        background-image: linear-gradient(135deg, var(--btn-a), var(--btn-b));
+      }
+      #explore-button {
+        background-image: linear-gradient(
+          135deg,
+          var(--accent-bright),
+          var(--accent)
+        );
+        color: #050505;
+        box-shadow: 0 12px 26px -12px rgba(250, 204, 21, 0.8);
+      }
+      #city-search-button::after,
+      #final-search-button::after,
+      #explore-button::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(
+          110deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.35),
+          transparent 70%
+        );
+        transform: translateX(-120%);
+        transition: transform 0.7s var(--ease);
+      }
+      #city-search-button:hover::after,
+      #final-search-button:hover::after,
+      #explore-button:hover::after {
+        transform: translateX(120%);
+      }
+      #city-search-button:active,
+      #final-search-button:active,
+      #explore-button:active {
+        transform: scale(0.97);
+      }
+
+      /* Cards */
+      .sh-city-card,
+      .sh-feature,
+      .sh-mini {
+        border-radius: 1.25rem;
+        background: var(--card);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+        transition:
+          transform 0.4s var(--ease),
+          box-shadow 0.4s,
+          border-color 0.4s;
+      }
+      .sh-city-card {
+        border-radius: 1.5rem;
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+      }
+      .sh-city-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(37, 99, 235, 0.45);
+        box-shadow:
+          var(--shadow),
+          0 0 0 1px rgba(37, 99, 235, 0.2),
+          0 20px 50px -20px rgba(37, 99, 235, 0.45);
+      }
+      .sh-city-media {
+        aspect-ratio: 16/10;
+        isolation: isolate;
+      }
+      .sh-city-media img {
+        will-change: transform;
+        transition:
+          transform 0.8s var(--ease),
+          filter 0.5s;
+      }
+      .sh-city-card:hover .sh-city-media img {
+        transform: scale(1.07);
+        filter: saturate(1.1);
+      }
+      .sh-city-media::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          transparent 35%,
+          rgba(29, 78, 216, 0.5)
+        );
+        opacity: 0;
+        transition: opacity 0.5s;
+        pointer-events: none;
+      }
+      .sh-city-card:hover .sh-city-media::after {
+        opacity: 1;
+      }
+      .sh-country {
+        z-index: 2;
+        padding: 0.2rem 0.75rem;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 999px;
+        background: rgba(5, 8, 22, 0.4);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+        letter-spacing: 0.12em;
+        font-size: 0.72rem;
+      }
+      .sh-editorial {
+        position: relative;
+        isolation: isolate;
+        box-shadow: var(--shadow);
+      }
+      .sh-editorial img {
+        aspect-ratio: 4/3;
+        transition: transform 1s var(--ease);
+      }
+      .sh-editorial::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.28),
+          transparent 45%,
+          rgba(5, 8, 22, 0.35)
+        );
+        pointer-events: none;
+        transition: opacity 0.5s;
+      }
+      .sh-editorial:hover img {
+        transform: scale(1.05);
+      }
+      .sh-editorial:hover::after {
+        opacity: 0.6;
+      }
+      .sh-mini {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.25rem;
+      }
+      .sh-mini p {
+        margin: 0;
+      }
+      .sh-mini:hover,
+      .sh-feature:hover {
+        transform: translateY(-4px);
+        border-color: rgba(37, 99, 235, 0.4);
+      }
+      .sh-feature {
+        position: relative;
+        overflow: hidden;
+        min-height: 13rem;
+        padding: 1.75rem;
+      }
+      .sh-feature > * {
+        position: relative;
+        z-index: 1;
+      }
+      .sh-feature::before {
+        content: "";
+        position: absolute;
+        top: -3.5rem;
+        left: -3.5rem;
+        width: 9rem;
+        height: 9rem;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.2),
+          transparent 70%
+        );
+        transition: transform 0.6s var(--ease);
+      }
+      .sh-feature:nth-child(even)::before {
+        background: linear-gradient(
+          135deg,
+          rgba(250, 204, 21, 0.25),
+          transparent 70%
+        );
+      }
+      .sh-feature::after {
+        content: "";
+        position: absolute;
+        inset-inline: 0;
+        bottom: 0;
+        height: 3px;
+        background: linear-gradient(270deg, var(--primary), var(--accent));
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.5s var(--ease);
+      }
+      .sh-feature:hover::before {
+        transform: scale(1.5);
+      }
+      .sh-feature:hover::after {
+        transform: scaleX(1);
+      }
+      .sh-feature:hover {
+        box-shadow:
+          var(--shadow),
+          0 18px 44px -22px rgba(37, 99, 235, 0.5);
+      }
+      .sh-feature:nth-child(even):hover {
+        border-color: rgba(250, 204, 21, 0.5);
+        box-shadow:
+          var(--shadow),
+          0 18px 44px -22px rgba(250, 204, 21, 0.45);
+      }
+
+      /* Process */
+      .sh-step-dot {
+        position: relative;
+        z-index: 1;
+        box-shadow:
+          0 0 0 8px var(--ring),
+          0 16px 32px -12px rgba(37, 99, 235, 0.65);
+        transition: transform 0.35s var(--ease);
+      }
+      .sh-step:nth-child(odd) .sh-step-dot {
+        background-image: linear-gradient(135deg, var(--btn-a), var(--btn-b));
+      }
+      .sh-step:nth-child(2) .sh-step-dot {
+        background-image: linear-gradient(
+          135deg,
+          var(--accent-bright),
+          var(--accent)
+        );
+        color: #050505;
+        box-shadow:
+          0 0 0 8px rgba(250, 204, 21, 0.2),
+          0 16px 32px -12px rgba(250, 204, 21, 0.8);
+      }
+      .sh-step:hover .sh-step-dot {
+        transform: scale(1.08);
+      }
+      @media (min-width: 768px) {
+        .sh-step:not(:last-child)::after {
+          content: "";
+          position: absolute;
+          top: 2rem;
+          right: calc(50% + 2.75rem);
+          width: calc(100% - 3.5rem);
+          height: 2px;
+          border-radius: 2px;
+          background: linear-gradient(270deg, var(--primary), var(--accent));
+        }
+        .sh-step:nth-child(2)::after {
+          background: linear-gradient(270deg, var(--accent), var(--primary));
+        }
+      }
+
+      /* Final CTA (always a dark panel; local tokens keep text readable in both themes) */
+      .sh-cta {
+        --text: #f8fafc;
+        --muted: #b4c0d6;
+        --primary: #60a5fa;
+        --surface: rgba(255, 255, 255, 0.07);
+        --card: rgba(255, 255, 255, 0.08);
+        --border: rgba(255, 255, 255, 0.16);
+        position: relative;
+        isolation: isolate;
+        border-color: rgba(96, 165, 250, 0.25);
+        border-radius: 2rem;
+        background:
+          radial-gradient(
+            22rem 16rem at 88% 0,
+            rgba(37, 99, 235, 0.6),
+            transparent 70%
+          ),
+          radial-gradient(
+            18rem 14rem at 8% 100%,
+            rgba(250, 204, 21, 0.16),
+            transparent 70%
+          ),
+          linear-gradient(135deg, #0b1120, #0a1440 60%, #1d4ed8 160%);
+        box-shadow: 0 40px 90px -40px rgba(29, 78, 216, 0.6);
+      }
+      .sh-cta::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px) 0
+            0/44px 44px,
+          linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)
+            0 0/44px 44px;
+        -webkit-mask: radial-gradient(circle at 50% 0, #000, transparent 70%);
+        mask: radial-gradient(circle at 50% 0, #000, transparent 70%);
+      }
+      .sh-cta #final-search-button {
+        background-image: linear-gradient(
+          135deg,
+          var(--accent-bright),
+          var(--accent)
+        );
+        color: #050505;
+        box-shadow: 0 14px 30px -12px rgba(250, 204, 21, 0.8);
+      }
+      .sh-cta #final-city-search:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.22);
+      }
+
+      /* Motion */
+      .sh-reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s var(--ease);
+      }
+      .sh-reveal.is-visible {
+        opacity: 1;
+        transform: none;
+      }
+      @media (scripting: none) {
+        .sh-reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @keyframes shFloat {
+        50% {
+          transform: translateY(-12px);
+        }
+      }
+      @keyframes shDrift {
+        to {
+          transform: translate3d(-2rem, 3rem, 0) scale(1.1);
+        }
+      }
+
+      /* Responsive + Typography (mobile-first, fluid). Scoped to home sections so SPA pages rendered into #app are untouched. */
+      #app :is(.sh-hero, .sh-section, .sh-explore, .sh-process) h1 {
+        font-size: var(--fs-h1);
+        line-height: 1.3;
+        margin-top: clamp(0.875rem, 0.7rem + 0.8vw, 1.25rem);
+      }
+      #app :is(.sh-hero, .sh-section, .sh-explore, .sh-process) h2 {
+        font-size: var(--fs-h2);
+        line-height: 1.4;
+        margin-top: clamp(0.625rem, 0.45rem + 0.6vw, 1rem);
+      }
+      #app :is(.sh-hero, .sh-section, .sh-explore, .sh-process) h3 {
+        font-size: var(--fs-h3);
+        line-height: 1.5;
+      }
+      #app
+        :is(.sh-hero, .sh-section, .sh-explore, .sh-process)
+        :is(h1, h2, h3, p) {
+        overflow-wrap: break-word;
+      }
+      #app :is(.sh-hero, .sh-section, .sh-explore, .sh-process) p {
+        font-size: var(--fs-body);
+        line-height: var(--lh-body);
+      }
+      #app
+        :is(.sh-hero, .sh-section, .sh-explore, .sh-process)
+        :is(h1, h2)
+        + p {
+        margin-top: clamp(0.75rem, 0.55rem + 0.7vw, 1.25rem);
+      }
+      #app .sh-hero p {
+        font-size: var(--fs-lead);
+      }
+      #app
+        :is(.sh-hero, .sh-section, .sh-explore, .sh-process)
+        :is(.sh-city-card, .sh-feature, .sh-step)
+        p {
+        font-size: var(--fs-small);
+      }
+      #city-search,
+      #final-city-search {
+        font-size: 1rem;
+      }
+      #city-search-button,
+      #explore-button,
+      #final-search-button {
+        font-size: var(--fs-body);
+        min-height: 2.75rem;
+      }
+      #explore-button {
+        margin-top: clamp(0.875rem, 0.7rem + 0.7vw, 1.25rem);
+      }
+      #app .sh-search {
+        margin-top: clamp(1.25rem, 1rem + 1vw, 2rem);
+      }
+      #app :is(.sh-section, .sh-explore > div, .sh-process > div) {
+        padding-block: var(--sec-y);
+      }
+      #app :is(.sh-hero, .sh-section, .sh-explore > div, .sh-process > div) {
+        padding-inline: var(--gutter);
+      }
+      #app .sh-hero {
+        padding-block: var(--hero-y);
+        gap: var(--gap-hero);
+      }
+      #app :is(.sh-explore, .sh-process) > div {
+        gap: var(--gap-hero);
+      }
+      .sh-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--gap-card);
+      }
+      .sh-grid > * {
+        min-width: 0;
+      }
+      #app :is(.sh-grid, .sh-process .grid) {
+        margin-top: var(--gap-block);
+      }
+      #app .sh-city-card > div:last-child {
+        padding: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+      }
+      #app .sh-feature {
+        padding: clamp(1.125rem, 0.9rem + 1vw, 1.75rem);
+      }
+      #app .sh-feature h3 {
+        margin-top: clamp(0.75rem, 0.6rem + 0.6vw, 1.25rem);
+      }
+      #app .sh-cta {
+        padding: clamp(2rem, 1.5rem + 3vw, 4rem)
+          clamp(1.25rem, 0.8rem + 3vw, 3rem);
+      }
+      @media (min-width: 768px) {
+        .sh-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (min-width: 1024px) {
+        .sh-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 1023px) {
+        #app .sh-hero {
+          min-height: auto;
+        }
+        #app .sh-hero-visual {
+          order: 2;
+        }
+      }
+      @media (max-width: 767px) {
+        #navbar > *,
+        #navbar nav {
+          height: auto;
+          min-height: 3.5rem;
+        }
+        #navbar > * {
+          padding-block: 0.5rem;
+        }
+        #navbar :is(a, button) {
+          font-size: 0.9375rem;
+        }
+        #navbar button {
+          min-width: 2.5rem;
+          min-height: 2.5rem;
+        }
+        .sh-cta {
+          border-radius: 1.5rem;
+        }
+        #app .sh-feature {
+          min-height: 0;
+        }
+        #app .sh-num {
+          min-width: 2.5rem;
+          height: 2.5rem;
+          font-size: 1.0625rem;
+          border-radius: 0.875rem;
+        }
+        #app .sh-editorial img {
+          aspect-ratio: 16/10;
+        }
+        #app .sh-process .grid {
+          gap: 1.75rem;
+        }
+        #app .sh-step {
+          display: grid;
+          grid-template-columns: auto minmax(0, 1fr);
+          column-gap: 1rem;
+          align-items: start;
+          text-align: start;
+        }
+        #app .sh-step-dot {
+          grid-row: 1 / span 2;
+          margin: 0;
+          width: 3.25rem;
+          height: 3.25rem;
+          font-size: 1.0625rem;
+        }
+        #app .sh-step h3 {
+          margin-top: 0;
+        }
+        #app .sh-step p {
+          margin-top: 0.25rem;
+        }
+      }
+      @media (max-width: 479px) {
+        #app .sh-search {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        #app .sh-search input {
+          flex: none;
+          width: 100%;
+        }
+        #city-search-button,
+        #explore-button {
+          width: 100%;
+        }
+        #city-search-button,
+        #explore-button,
+        #final-search-button {
+          padding: 0.75rem 1.25rem;
+        }
+        #city-search,
+        #final-city-search {
+          text-overflow: ellipsis;
+        }
+        #city-search::placeholder,
+        #final-city-search::placeholder {
+          font-size: 0.9375rem;
+        }
+        .sh-eyebrow {
+          letter-spacing: 0.06em;
+          font-size: 0.6875rem;
+        }
+        #imgHedaerHome {
+          border-radius: 1.5rem;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        ::before,
+        ::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+        .sh-reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <header class="sh-header relative w-full">
+      <div id="navbar"></div>
+    </header>
+
+    <!-- MAIN APPLICATION -->
+    <main id="app">
+      <!-- HERO -->
+      <section
+        class="sh-reveal sh-hero mx-auto flex min-h-[calc(100vh-80px)] max-w-7xl flex-col items-center justify-between gap-12 px-6 py-16 lg:flex-row-reverse lg:gap-20"
+      >
+        <div class="sh-hero-visual flex w-full justify-center lg:w-[55%]">
+          <img
+            id="imgHedaerHome"
+            src="assets/img/smart-people.svg"
+            alt="کاوش شهرهای جهان با شهرآوا"
+            class="h-auto w-full max-w-2xl"
+          />
+        </div>
+
+        <div class="w-full max-w-xl lg:w-[45%]">
+          <span class="sh-eyebrow font-bold text-[var(--primary)]"
+            >SHAHRAVA · DISCOVER THE WORLD</span
+          >
+          <h1
+            class="mt-5 text-4xl font-black leading-[1.25] text-[var(--text)] sm:text-5xl lg:text-6xl"
+          >
+            شهرها را <span class="sh-gradient-text">جور دیگری</span> کشف کن
+          </h1>
+          <p class="mt-6 max-w-lg text-lg leading-9 text-[var(--muted)]">
+            از خیابان‌های تهران تا شب‌های توکیو؛ شهر موردنظرت را جستجو کن و
+            دنیای آن را کشف کن.
+          </p>
+
+          <div
+            class="sh-search mt-8 flex max-w-xl items-center gap-3 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-2 shadow-sm"
+          >
+            <input
+              type="search"
+              name="city"
+              id="city-search"
+              placeholder="کدام شهر را می‌خواهید کشف کنید؟"
+              aria-label="نام شهر"
+              class="min-w-0 flex-1 bg-transparent px-4 py-3 text-[var(--text)] outline-none placeholder:text-[var(--muted)]"
+            />
+            <button
+              type="button"
+              id="city-search-button"
+              class="rounded-xl bg-[var(--primary)] px-6 py-3 font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-90"
+            >
+              جستجو
+            </button>
+          </div>
+
+          <button
+            type="button"
+            id="explore-button"
+            class="mt-5 rounded-xl bg-[var(--accent)] px-7 py-3.5 font-bold text-[var(--text)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-95"
+          >
+            شروع به کاوش
+          </button>
+        </div>
+      </section>
+
+      <!-- FEATURED CITIES -->
+      <section class="sh-section mx-auto max-w-7xl px-6 py-24">
+        <div
+          class="flex flex-col justify-between gap-6 md:flex-row md:items-end"
+        >
+          <div>
+            <span class="sh-eyebrow font-bold text-[var(--primary)]"
+              >FEATURED DESTINATIONS</span
+            >
+            <h2 class="mt-3 text-3xl font-black text-[var(--text)] sm:text-4xl">
+              شهرهای منتخب
+            </h2>
+            <p class="mt-4 max-w-xl leading-8 text-[var(--muted)]">
+              مقصد بعدی خود را پیدا کنید و با شهرهای محبوب جهان بیشتر آشنا شوید.
+            </p>
+          </div>
+          <a
+            href="/cities/"
+            data-nav-link
+            class="sh-link-all inline-flex w-fit items-center gap-2 font-bold text-[var(--primary)] transition-all duration-300 hover:gap-3"
+            >مشاهده همه شهرها<span aria-hidden="true">←</span></a
+          >
+        </div>
+
+        <div class="sh-grid mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <article
+            class="sh-city-card group overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+          >
+            <div class="sh-city-media relative aspect-[16/10] overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1571821807645-9f7c4a3d6d8a?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                alt="نمایی از شهر تهران"
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+              ></div>
+              <span
+                class="sh-country absolute bottom-4 right-4 text-sm font-semibold text-white"
+                >IRAN</span
+              >
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-[var(--text)]">تهران</h3>
+              <p class="mt-3 text-sm leading-7 text-[var(--muted)]">
+                پایتخت ایران؛ شهری پرجنب‌وجوش با ترکیبی از تاریخ، فرهنگ و زندگی
+                مدرن.
+              </p>
+              <a
+                href="/cities/tehran/"
+                data-nav-link
+                class="sh-link mt-5 inline-flex font-semibold text-[var(--primary)]"
+                >کشف شهر</a
+              >
+            </div>
+          </article>
+          <article
+            class="sh-city-card group overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+          >
+            <div class="sh-city-media relative aspect-[16/10] overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                alt="نمایی از شهر توکیو"
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+              ></div>
+              <span
+                class="sh-country absolute bottom-4 right-4 text-sm font-semibold text-white"
+                >JAPAN</span
+              >
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-[var(--text)]">توکیو</h3>
+              <p class="mt-3 text-sm leading-7 text-[var(--muted)]">
+                شهری که سنت ژاپنی و تکنولوژی مدرن در آن در کنار یکدیگر قرار
+                گرفته‌اند.
+              </p>
+              <a
+                href="/cities/tokyo/"
+                data-nav-link
+                class="sh-link mt-5 inline-flex font-semibold text-[var(--primary)]"
+                >کشف شهر</a
+              >
+            </div>
+          </article>
+          <article
+            class="sh-city-card group overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+          >
+            <div class="sh-city-media relative aspect-[16/10] overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                alt="نمایی از شهر پاریس"
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+              ></div>
+              <span
+                class="sh-country absolute bottom-4 right-4 text-sm font-semibold text-white"
+                >FRANCE</span
+              >
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-[var(--text)]">پاریس</h3>
+              <p class="mt-3 text-sm leading-7 text-[var(--muted)]">
+                شهری تاریخی و فرهنگی با معماری، هنر و خیابان‌هایی که هر گوشه آن
+                داستانی دارد.
+              </p>
+              <a
+                href="/cities/paris/"
+                data-nav-link
+                class="sh-link mt-5 inline-flex font-semibold text-[var(--primary)]"
+                >کشف شهر</a
+              >
+            </div>
+          </article>
+          <article
+            class="sh-city-card group overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+          >
+            <div class="sh-city-media relative aspect-[16/10] overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                alt="نمایی از شهر نیویورک"
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+              ></div>
+              <span
+                class="sh-country absolute bottom-4 right-4 text-sm font-semibold text-white"
+                >USA</span
+              >
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-[var(--text)]">نیویورک</h3>
+              <p class="mt-3 text-sm leading-7 text-[var(--muted)]">
+                یکی از شناخته‌شده‌ترین شهرهای جهان؛ پرانرژی، چندفرهنگی و همیشه
+                در حال حرکت.
+              </p>
+              <a
+                href="/cities/new-york/"
+                data-nav-link
+                class="sh-link mt-5 inline-flex font-semibold text-[var(--primary)]"
+                >کشف شهر</a
+              >
+            </div>
+          </article>
+          <article
+            class="sh-city-card group overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+          >
+            <div class="sh-city-media relative aspect-[16/10] overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                alt="نمایی از شهر استانبول"
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+              ></div>
+              <span
+                class="sh-country absolute bottom-4 right-4 text-sm font-semibold text-white"
+                >TURKEY</span
+              >
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-[var(--text)]">استانبول</h3>
+              <p class="mt-3 text-sm leading-7 text-[var(--muted)]">
+                شهری میان دو قاره با تاریخی غنی، معماری چشمگیر و فرهنگی
+                منحصربه‌فرد.
+              </p>
+              <a
+                href="/cities/istanbul/"
+                data-nav-link
+                class="sh-link mt-5 inline-flex font-semibold text-[var(--primary)]"
+                >کشف شهر</a
+              >
+            </div>
+          </article>
+          <article
+            class="sh-city-card group overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+          >
+            <div class="sh-city-media relative aspect-[16/10] overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                alt="نمایی از شهر دبی"
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+              ></div>
+              <span
+                class="sh-country absolute bottom-4 right-4 text-sm font-semibold text-white"
+                >UAE</span
+              >
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-[var(--text)]">دبی</h3>
+              <p class="mt-3 text-sm leading-7 text-[var(--muted)]">
+                شهری مدرن و پرسرعت با معماری آینده‌نگر و جاذبه‌های متنوع.
+              </p>
+              <a
+                href="/cities/dubai/"
+                data-nav-link
+                class="sh-link mt-5 inline-flex font-semibold text-[var(--primary)]"
+                >کشف شهر</a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- EXPLORE -->
+      <section
+        class="sh-reveal sh-explore border-y border-[var(--border)] bg-[var(--surface)]"
+      >
+        <div
+          class="mx-auto flex max-w-7xl flex-col items-center gap-12 px-6 py-24 lg:flex-row"
+        >
+          <div class="w-full lg:w-1/2">
+            <div class="sh-editorial overflow-hidden rounded-3xl">
+              <img
+                src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&amp;fit=crop&amp;w=1600&amp;q=88"
+                alt="کاوش شهرهای جهان"
+                loading="lazy"
+                class="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+          <div class="w-full lg:w-1/2">
+            <span class="sh-eyebrow font-bold text-[var(--primary)]"
+              >EXPLORE THE WORLD</span
+            >
+            <h2
+              class="mt-4 text-3xl font-black leading-tight text-[var(--text)] sm:text-4xl"
+            >
+              جهان را از یک شهر شروع کن
+            </h2>
+            <p class="mt-6 max-w-xl leading-8 text-[var(--muted)]">
+              یک شهر را انتخاب کن و اطلاعات آن را از زوایای مختلف ببین؛ از
+              موقعیت جغرافیایی و آب‌وهوا تا جاذبه‌ها، تصاویر و مکان‌های دیدنی.
+            </p>
+            <div class="mt-8 grid gap-4 sm:grid-cols-2">
+              <div
+                class="sh-mini rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5"
+              >
+                <span class="sh-num sh-num--b font-black">01</span>
+                <p class="font-semibold text-[var(--text)]">اطلاعات شهری</p>
+              </div>
+              <div
+                class="sh-mini rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5"
+              >
+                <span class="sh-num sh-num--y font-black">02</span>
+                <p class="font-semibold text-[var(--text)]">
+                  جاذبه‌ها و مکان‌ها
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <section class="sh-reveal sh-section mx-auto max-w-7xl px-6 py-24">
+        <div class="max-w-2xl">
+          <span class="sh-eyebrow font-bold text-[var(--primary)]"
+            >SHAHRAVA FEATURES</span
+          >
+          <h2 class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl">
+            هر چیزی که برای شناخت یک شهر نیاز داری
+          </h2>
+          <p class="mt-5 leading-8 text-[var(--muted)]">
+            شهرآوا اطلاعات موردنیاز برای شناخت بهتر مقصد موردنظر شما را در یک
+            تجربه یکپارچه جمع می‌کند.
+          </p>
+        </div>
+        <div class="sh-grid mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <article
+            class="sh-feature rounded-2xl border border-[var(--border)] bg-[var(--card)] p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <span class="sh-num sh-num--b font-black">01</span>
+            <h3 class="mt-5 text-xl font-bold text-[var(--text)]">
+              اطلاعات کامل شهر
+            </h3>
+            <p class="mt-3 leading-7 text-[var(--muted)]">
+              جمعیت، کشور، موقعیت جغرافیایی، منطقه زمانی و اطلاعات پایه شهر.
+            </p>
+          </article>
+          <article
+            class="sh-feature rounded-2xl border border-[var(--border)] bg-[var(--card)] p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <span class="sh-num sh-num--y font-black">02</span>
+            <h3 class="mt-5 text-xl font-bold text-[var(--text)]">آب‌وهوا</h3>
+            <p class="mt-3 leading-7 text-[var(--muted)]">
+              مشاهده وضعیت آب‌وهوا و پیش‌بینی شرایط جوی شهر موردنظر.
+            </p>
+          </article>
+          <article
+            class="sh-feature rounded-2xl border border-[var(--border)] bg-[var(--card)] p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <span class="sh-num sh-num--b font-black">03</span>
+            <h3 class="mt-5 text-xl font-bold text-[var(--text)]">جاذبه‌ها</h3>
+            <p class="mt-3 leading-7 text-[var(--muted)]">
+              مکان‌های دیدنی و جاذبه‌های مهم هر شهر را پیدا و بررسی کن.
+            </p>
+          </article>
+          <article
+            class="sh-feature rounded-2xl border border-[var(--border)] bg-[var(--card)] p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <span class="sh-num sh-num--y font-black">04</span>
+            <h3 class="mt-5 text-xl font-bold text-[var(--text)]">تصاویر</h3>
+            <p class="mt-3 leading-7 text-[var(--muted)]">
+              تصاویر واقعی از شهر و مکان‌های دیدنی آن را مشاهده کن.
+            </p>
+          </article>
+          <article
+            class="sh-feature rounded-2xl border border-[var(--border)] bg-[var(--card)] p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <span class="sh-num sh-num--b font-black">05</span>
+            <h3 class="mt-5 text-xl font-bold text-[var(--text)]">
+              نقشه تعاملی
+            </h3>
+            <p class="mt-3 leading-7 text-[var(--muted)]">
+              موقعیت شهر و مکان‌های مهم آن را روی نقشه تعاملی مشاهده کن.
+            </p>
+          </article>
+          <article
+            class="sh-feature rounded-2xl border border-[var(--border)] bg-[var(--card)] p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <span class="sh-num sh-num--y font-black">06</span>
+            <h3 class="mt-5 text-xl font-bold text-[var(--text)]">ویدیو</h3>
+            <p class="mt-3 leading-7 text-[var(--muted)]">
+              ویدیوهای واقعی برای تجربه بهتر فضای شهر و شناخت آن.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section
+        class="sh-reveal sh-process border-y border-[var(--border)] bg-[var(--surface)]"
+      >
+        <div class="mx-auto max-w-7xl px-6 py-24">
+          <div class="text-center">
+            <span class="sh-eyebrow font-bold text-[var(--primary)]"
+              >HOW IT WORKS</span
+            >
+            <h2 class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl">
+              چطور کار می‌کند؟
+            </h2>
+          </div>
+          <div class="mx-auto mt-14 grid max-w-5xl gap-8 md:grid-cols-3">
+            <article class="sh-step relative text-center">
+              <div
+                class="sh-step-dot mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[var(--primary)] text-white text-xl font-black"
+              >
+                01
+              </div>
+              <h3 class="mt-6 text-xl font-bold text-[var(--text)]">
+                یک شهر را جستجو کن
+              </h3>
+              <p class="mt-3 leading-7 text-[var(--muted)]">
+                نام شهر موردنظر خود را وارد کن و جستجو را شروع کن.
+              </p>
+            </article>
+            <article class="sh-step relative text-center">
+              <div
+                class="sh-step-dot mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[var(--accent)] text-[var(--text)] text-xl font-black"
+              >
+                02
+              </div>
+              <h3 class="mt-6 text-xl font-bold text-[var(--text)]">
+                اطلاعات شهر را کشف کن
+              </h3>
+              <p class="mt-3 leading-7 text-[var(--muted)]">
+                اطلاعات مهم شهر، آب‌وهوا، موقعیت و مشخصات آن را ببین.
+              </p>
+            </article>
+            <article class="sh-step relative text-center">
+              <div
+                class="sh-step-dot mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[var(--primary)] text-white text-xl font-black"
+              >
+                03
+              </div>
+              <h3 class="mt-6 text-xl font-bold text-[var(--text)]">
+                شهر را از زوایای مختلف ببین
+              </h3>
+              <p class="mt-3 leading-7 text-[var(--muted)]">
+                جاذبه‌ها، تصاویر، ویدیوها و مکان‌های مهم شهر را کشف کن.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="sh-reveal sh-section mx-auto max-w-7xl px-6 py-24">
+        <div
+          class="sh-cta overflow-hidden rounded-[2rem] border border-[var(--border)] bg-[var(--card)] px-6 py-16 text-center shadow-sm sm:px-12"
+        >
+          <span class="sh-eyebrow font-bold text-[var(--primary)]"
+            >START EXPLORING</span
+          >
+          <h2
+            class="mx-auto mt-4 max-w-2xl text-3xl font-black text-[var(--text)] sm:text-4xl"
+          >
+            شهر بعدی تو کجاست؟
+          </h2>
+          <p class="mx-auto mt-5 max-w-xl leading-8 text-[var(--muted)]">
+            نام یک شهر را جستجو کن و سفر دیجیتال خودت را شروع کن.
+          </p>
+          <div class="mx-auto mt-8 flex max-w-2xl flex-col gap-3 sm:flex-row">
+            <input
+              type="search"
+              id="final-city-search"
+              name="city"
+              placeholder="نام شهر را وارد کنید..."
+              aria-label="نام شهر"
+              class="min-w-0 flex-1 rounded-xl border border-[var(--border)] bg-[var(--surface)] px-5 py-3.5 text-[var(--text)] outline-none transition-all focus:border-[var(--primary)]"
+            />
+            <button
+              type="button"
+              id="final-search-button"
+              class="rounded-xl bg-[var(--primary)] px-7 py-3.5 font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-90"
+            >
+              کشف شهر
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div id="footer"></div>
+    </footer>
+
+    <!-- APPLICATION -->
+    <script type="module" src="./js/main.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const items = document.querySelectorAll(".sh-reveal");
+
+        if (!("IntersectionObserver" in window)) {
+          items.forEach((item) => item.classList.add("is-visible"));
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 },
+        );
+
+        items.forEach((item) => observer.observe(item));
+      });
+    </script>
+    <script type="module" src="js/navigation.js"></script>
+
+    <script src="js/api/SearchCity.js"></script>
+    <script src="js/theme.js"></script>
+  </body>
+</html>
