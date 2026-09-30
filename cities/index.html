@@ -2,38 +2,200 @@
 <html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>شهرها | شهرآوا</title>
-
+    <title>شهرها | اطلاعات جامع و هوشمند شهرهای جهان — شهرآوا</title>
     <meta
       name="description"
-      content="شهرهای جهان را در شهرآوا کشف کنید و اطلاعات مختلف شهرها را مشاهده کنید."
+      content="کاوشگر جامع و هوشمند شهرهای جهان؛ بررسی آب‌وهوای زنده، پیش‌بینی ۷ روزه، جاذبه‌های گردشگری، گالری تصاویر، نقشه و آمار دقیق."
+    />
+    <meta property="og:title" content="شهرها | اطلاعات جامع و هوشمند شهرهای جهان — شهرآوا" />
+    <meta property="og:description" content="کاوشگر جامع و هوشمند شهرهای جهان؛ بررسی آب‌وهوای زنده، پیش‌بینی ۷ روزه، جاذبه‌های گردشگری، گالری تصاویر، نقشه و آمار دقیق." />
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
     />
 
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../css/output.css" />
+    <link rel="stylesheet" href="../css/input.css" />
 
+    <style>
+      .custom-city-marker, .custom-attraction-marker {
+        background: transparent;
+        border: none;
+      }
+      .leaflet-popup-content-wrapper {
+        border-radius: 1rem;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+        padding: 4px;
+      }
+      .leaflet-popup-content {
+        margin: 8px 12px;
+        line-height: 1.5;
+      }
+    </style>
+
+    <!-- Leaflet JS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
+    <!-- Main JS -->
     <script type="module" src="../js/main.js"></script>
   </head>
 
-  <body>
-    <header>
+  <body class="bg-[var(--bg)] text-[var(--text)] min-h-screen flex flex-col">
+    <!-- NAVBAR -->
+    <header class="relative w-full z-50">
       <div id="navbar"></div>
     </header>
 
-    <main id="app">
-      <section class="max-w-7xl mx-auto px-6 py-16">
-        <h1 class="text-4xl font-black text-[var(--text)]">شهرهای جهان</h1>
+    <!-- MAIN CITY INTELLIGENCE CONTENT -->
+    <main id="app" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 space-y-10">
+      <!-- CITY SEARCH & EXPLORATION BAR -->
+      <section class="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
+        <form id="city-page-search-form" class="flex flex-col sm:flex-row gap-3">
+          <div class="relative flex-1">
+            <span class="absolute inset-y-0 right-4 flex items-center text-[var(--muted)] pointer-events-none">🔍</span>
+            <input
+              type="search"
+              id="city-page-search-input"
+              placeholder="جستجوی شهر (مثلاً تهران، Tokyo, Paris, Istanbul, New York)..."
+              class="w-full rounded-2xl border border-[var(--border)] bg-[var(--surface)] py-3.5 pr-11 pl-4 text-sm text-[var(--text)] outline-none transition-all focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/20"
+              autocomplete="off"
+            />
+          </div>
+          <button
+            type="submit"
+            class="rounded-2xl bg-[var(--primary)] px-8 py-3.5 font-bold text-sm text-white shadow-md transition-all hover:opacity-90 active:scale-95"
+          >
+            کشف شهر
+          </button>
+        </form>
 
-        <p class="mt-4 text-[var(--muted)]">
-          شهر موردنظر خود را پیدا کنید و اطلاعات آن را کشف کنید.
-        </p>
+        <!-- Quick city exploration pills -->
+        <div class="mt-4 flex flex-wrap items-center gap-2 pt-3 border-t border-[var(--border)]">
+          <span class="text-xs text-[var(--muted)] ml-1">شهرهای محبوب:</span>
+          <button type="button" class="quick-city-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--surface)] text-xs font-semibold text-[var(--text)] hover:border-[var(--primary)] transition-colors" data-city="تهران">🇮🇷 تهران</button>
+          <button type="button" class="quick-city-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--surface)] text-xs font-semibold text-[var(--text)] hover:border-[var(--primary)] transition-colors" data-city="Tokyo">🇯🇵 توکیو</button>
+          <button type="button" class="quick-city-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--surface)] text-xs font-semibold text-[var(--text)] hover:border-[var(--primary)] transition-colors" data-city="Paris">🇫🇷 پاریس</button>
+          <button type="button" class="quick-city-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--surface)] text-xs font-semibold text-[var(--text)] hover:border-[var(--primary)] transition-colors" data-city="Istanbul">🇹🇷 استانبول</button>
+          <button type="button" class="quick-city-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--surface)] text-xs font-semibold text-[var(--text)] hover:border-[var(--primary)] transition-colors" data-city="London">🇬🇧 لندن</button>
+          <button type="button" class="quick-city-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--surface)] text-xs font-semibold text-[var(--text)] hover:border-[var(--primary)] transition-colors" data-city="Dubai">🇦🇪 دبی</button>
+          <button type="button" class="quick-city-pill px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--surface)] text-xs font-semibold text-[var(--text)] hover:border-[var(--primary)] transition-colors" data-city="New York">🇺🇸 نیویورک</button>
+        </div>
+
+        <!-- Recent Searches Container -->
+        <div id="recent-searches-container" class="mt-3 pt-3 border-t border-[var(--border)] hidden"></div>
+      </section>
+
+      <!-- 1. CITY HERO CONTAINER -->
+      <section id="city-hero-container"></section>
+
+      <!-- 2. CITY STATISTICS -->
+      <section id="city-statistics-container"></section>
+
+      <!-- 3. COUNTRY INFORMATION -->
+      <section>
+        <div class="mb-3 flex items-center justify-between">
+          <h2 class="text-xl font-bold text-[var(--text)]">اطلاعات کشور</h2>
+          <span class="text-xs text-[var(--muted)]">پایگاه داده بین‌المللی کشورها</span>
+        </div>
+        <div id="country-card-container"></div>
+      </section>
+
+      <!-- 4. WEATHER & 7-DAY FORECAST -->
+      <section>
+        <div class="mb-3 flex items-center justify-between">
+          <h2 class="text-xl font-bold text-[var(--text)]">آب‌وهوا و پیش‌بینی ۷ روزه</h2>
+          <span class="text-xs text-[var(--muted)]">داده‌های سنجش ماهواره‌ای Open-Meteo</span>
+        </div>
+        <div id="weather-container"></div>
+      </section>
+
+      <!-- 5. ABOUT CITY -->
+      <section id="about-city-container"></section>
+
+      <!-- 6. TOURIST ATTRACTIONS -->
+      <section>
+        <div class="mb-3 flex items-center justify-between">
+          <div>
+            <h2 class="text-xl font-bold text-[var(--text)]">جاذبه‌های گردشگری</h2>
+            <p class="text-xs text-[var(--muted)] mt-0.5">مکان‌های تاریخی، موزه‌ها، پارک‌ها و نمادهای شهری</p>
+          </div>
+        </div>
+        <div id="attractions-container"></div>
+      </section>
+
+      <!-- 7. PHOTO GALLERY -->
+      <section>
+        <div class="mb-3 flex items-center justify-between">
+          <div>
+            <h2 class="text-xl font-bold text-[var(--text)]">تصاویر و گالری شهر</h2>
+            <p class="text-xs text-[var(--muted)] mt-0.5">تصاویر ثبت‌شده از این شهر و جاذبه‌های آن</p>
+          </div>
+        </div>
+        <div id="photo-gallery-container"></div>
+      </section>
+
+      <!-- 8. INTERACTIVE MAP -->
+      <section id="interactive-map-section">
+        <div class="mb-3 flex items-center justify-between">
+          <div>
+            <h2 class="text-xl font-bold text-[var(--text)]">نقشه تعاملی</h2>
+            <p class="text-xs text-[var(--muted)] mt-0.5">موقعیت مرکز شهر و نقاط دیدنی روی نقشه OpenStreetMap</p>
+          </div>
+        </div>
+        <div class="overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--card)] shadow-sm">
+          <div id="leaflet-map" class="w-full h-[420px] z-10"></div>
+        </div>
       </section>
     </main>
 
-    <footer>
+    <!-- FOOTER -->
+    <footer class="mt-16">
       <div id="footer"></div>
     </footer>
+
+    <!-- CITY CONTROLLER INITIALIZER -->
+    <script type="module">
+      import { loadCityIntelligence } from "../js/city-page.js";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // Read URL query parameter ?q=
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get("q") || urlParams.get("city") || "تهران";
+
+        const searchInput = document.getElementById("city-page-search-input");
+        if (searchInput) searchInput.value = query;
+
+        loadCityIntelligence(query);
+
+        // Bind form search
+        const form = document.getElementById("city-page-search-form");
+        if (form) {
+          form.onsubmit = (e) => {
+            e.preventDefault();
+            const val = searchInput?.value.trim();
+            if (val) loadCityIntelligence(val);
+          };
+        }
+
+        // Bind quick pills
+        document.querySelectorAll(".quick-city-pill").forEach((pill) => {
+          pill.onclick = () => {
+            const city = pill.getAttribute("data-city");
+            if (searchInput) searchInput.value = city;
+            loadCityIntelligence(city);
+          };
+        });
+      });
+    </script>
   </body>
 </html>

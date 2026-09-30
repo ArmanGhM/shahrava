@@ -1,0 +1,6 @@
+{
+  "name": "شهرآوا - کاوشگر شهرهای جهان",
+  "description": "شهرآوا یک کاوشگر تعاملی برای کشف شهرهای جهان، اطلاعات شهری، آب‌وهوا، جاذبه‌ها، تصاویر و موقعیت جغرافیایی است.",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

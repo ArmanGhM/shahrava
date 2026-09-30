@@ -1,6 +1,16 @@
 {
+  "name": "shahrava",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "npx @tailwindcss/cli -i ./css/input.css -o ./css/output.css",
+    "lint": "node --check server.js js/main.js js/navigation.js js/theme.js js/city-intelligence.js js/city-page.js js/api/SearchCity.js",
+    "start": "node server.js"
+  },
   "dependencies": {
     "@tailwindcss/cli": "^4.3.3",
+    "express": "^5.2.1",
     "navigo": "^8.11.1",
     "tailwindcss": "^4.3.3"
   }
